@@ -18,7 +18,15 @@ window.onload=function(){
    });
 }
 
-
+function gameOver(stColor){
+   ctx.font="bold 25px Arial";
+   ctx.fillStyle="#058";
+   if (stColor){
+      ctx.fillText("蓝方获胜",200,200);
+   }else{
+      ctx.fillText("红方获胜",200,200);
+   }
+}
 //初始化棋盘
 function init(){
    ctx.beginPath();
@@ -82,9 +90,7 @@ function placeStone(stColor,offx,offy){
     if (check0(tempx,tempy)||check90(tempx,tempy)||
           check45(tempx,tempy)||check135(tempx,tempy))
        { ctx.clearRect(0,0,590,590);
-         if (stColor)
-            writeMessage("蓝方获胜");
-         else writeMessage("红方获胜");
+          gameOver(stColor);
        }
     stColor=!stColor;
    }
